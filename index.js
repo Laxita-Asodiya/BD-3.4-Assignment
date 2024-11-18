@@ -66,7 +66,7 @@ app.get('/cart/add', (req, res) => {
   let quantity = req.query.quantity;
 
   let result = addCartItem(productId, name, price, quantity);
-  res.json({ cartItem: result });
+  res.json({ cartItems: result });
 });
 
 app.get('/cart/edit', (req, res) => {
@@ -75,19 +75,19 @@ app.get('/cart/edit', (req, res) => {
 
   let result = editItemQuantity(productId, quantity);
 
-  res.json({ cartItem: result });
+  res.json({ cartItems: result });
 });
 
 app.get('/cart/delete', (req, res) => {
   let productId = req.query.productId;
   let result = cart.filter((ele) => deleteProduct(ele, productId));
 
-  res.json({ cartItem: result });
+  res.json({ cartItems: result });
 });
 
 app.get('/cart', (req, res) => {
   let result = cart.filter((ele) => allProducts(ele));
-  res.json({ cartItem: result });
+  res.json({ cartItems: result });
 });
 
 app.get('/cart/total-quantity', (req, res) => {
